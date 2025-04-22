@@ -1,8 +1,7 @@
 package com.ljw.syncpay.api.user.dto;
 
-import com.ljw.syncpay.application.user.dto.UserProfileInfo;
+import com.ljw.syncpay.domain.user.User;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record UserProfileResponse(
@@ -13,11 +12,11 @@ public record UserProfileResponse(
 
 ) {
 
-    public static UserProfileResponse to(UserProfileInfo userProfileInfo) {
+    public static UserProfileResponse to(User user) {
         return new UserProfileResponse(
-                userProfileInfo.getNickname(),
-                userProfileInfo.getProfileViewCount(),
-                userProfileInfo.getProfileCreatedAt());
+                user.getNickname(),
+                user.getProfileViewCount(),
+                user.getProfileCreatedAt());
     }
 
 }
