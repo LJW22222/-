@@ -29,4 +29,9 @@ public class UserQueryAdapter implements UserQueryPort {
         return userProfiles.map(UserToDomain::to);
     }
 
+    @Override
+    public User getUserInf(Long id) {
+        return UserToDomain.to(userRepository.findByUserId(id).get());
+    }
+
 }

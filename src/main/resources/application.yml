@@ -9,3 +9,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+
+toss:
+  SECRET_KEY : "test_sk_DLJOpm5QrlWdYnA7poeqVPNdxbWn:"

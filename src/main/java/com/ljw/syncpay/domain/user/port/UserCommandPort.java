@@ -6,4 +6,6 @@ public interface UserCommandPort {
 
     User updateUserProfileViewCount(Long userId);
 
+    void updateUserPoint(Long userId, int point);
+
 }

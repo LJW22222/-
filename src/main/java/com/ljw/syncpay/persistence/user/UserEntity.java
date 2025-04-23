@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 
@@ -23,10 +24,16 @@ public class UserEntity {
 
     private LocalDateTime profileCreatedAt;
 
+    private int point;
+
     @Builder
     public UserEntity(String nickname, int profileViewCount, LocalDateTime profileCreatedAt) {
         this.nickname = nickname;
         this.profileViewCount = profileViewCount;
         this.profileCreatedAt = profileCreatedAt;
+    }
+
+    public void updatePoint(int point) {
+        this.point += point;
     }
 }
