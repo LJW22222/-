@@ -3,11 +3,13 @@ package com.ljw.syncpay.infra.toss.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.ZonedDateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString
 public class TossPaymentConfirmReponse {
 
     private String mId;

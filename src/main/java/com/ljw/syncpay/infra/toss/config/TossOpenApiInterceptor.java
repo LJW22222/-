@@ -14,7 +14,7 @@ public class TossOpenApiInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate template) {
-        String encodedKey = Base64.getEncoder().encodeToString((serviceKey).getBytes(StandardCharsets.UTF_8));
+        String encodedKey = Base64.getEncoder().encodeToString((serviceKey + ":").getBytes(StandardCharsets.UTF_8));
         template.header("Content-type", "application/json");
         template.header("Authorization", "Basic " + encodedKey);
     }

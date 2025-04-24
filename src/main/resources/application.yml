@@ -1,4 +1,8 @@
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   application:
     name: syncpay
   datasource:
@@ -11,4 +15,4 @@ spring:
       ddl-auto: create-drop
 
 toss:
-  SECRET_KEY : "test_sk_DLJOpm5QrlWdYnA7poeqVPNdxbWn:"
+  SECRET_KEY : "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"

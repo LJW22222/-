@@ -21,11 +21,11 @@ public class TossUseCase implements TossUseCasePort {
     public TossPaymentConfirmReponse tossPayment(String paymentKey, String orderId, int amount, long userId, int coupon) {
         int discount = CouponDiscount.discount(coupon, amount);
         int discountAmount = amount - discount;
-//            TossPaymentConfirmReponse tossPaymentConfirmReponse = tossOpenApiPort.tossPayment(discountAmount, paymentKey, orderId);
-
-//        userCommandPort.updateUserPoint(userId, tossPaymentConfirmReponse.getAmount());
-        userCommandPort.updateUserPoint(userId, discountAmount);
-//        return tossPaymentConfirmReponse;
-        return null;
+        TossPaymentConfirmReponse tossPaymentConfirmReponse = tossOpenApiPort.tossPayment(discountAmount, paymentKey, orderId);
+        log.info("tossPaymentConfirmReponse :: " + tossPaymentConfirmReponse.toString());
+        userCommandPort.updateUserPoint(userId, tossPaymentConfirmReponse.getAmount());
+//        userCommandPort.updateUserPoint(userId, discountAmount);
+        return tossPaymentConfirmReponse;
+//        return null;
     }
 }
