@@ -18,6 +18,17 @@ public class UserController {
 
     private final UserUseCasePort userUseCasePort;
 
+    /**
+     * 모든 사용자의 프로필을 조회한다. [ sorted : NICKNAME, VISITED, CREATE_AT ]
+     * NICKNAME -> 닉네임
+     * VISITED -> 조회수
+     * CREATE_AT -> 등록일
+     * 모든 정렬은 오름차순으로 정렬된다.
+     * @param page
+     * @param size
+     * @param sortType
+     * @return
+     */
     @GetMapping("/profiles")
     public Response<Page<UserProfileResponse>> getUserProfileList(
             @RequestParam(defaultValue = "0") int page,
@@ -29,6 +40,14 @@ public class UserController {
         return Response.success(responsePage);
     }
 
+    /**
+     * 사용자의 프로필 방문 시, 조회수를 카운팅 한다.
+     * 여기서 24H를 기준으로, 중복 조회수 카운팅을 방지한다.
+     * 하루가 지나면 다시 조회수 카운팅을 할 수 있다.
+     * 본인이 본인의 프로필 조회 시, 카운팅은 이루어지지 않는다.
+     * @param updateUserProfileVIewCountRequest
+     * @return
+     */
     @PutMapping("/visited")
     public Response<User> updateUserProfileViewCount(
             @RequestBody UpdateUserProfileVIewCountRequest updateUserProfileVIewCountRequest

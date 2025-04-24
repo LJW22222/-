@@ -1,11 +1,9 @@
 package com.ljw.syncpay.support;
 
-import com.ljw.syncpay.domain.user.User;
 import com.ljw.syncpay.persistence.user.UserEntity;
 import com.ljw.syncpay.persistence.user.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -13,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 서버 처음 시작 시, 라이플 사이클 중 DI 작업이 완료 된 후
+ * 임의의 사용자 데이터 300건을 저장한다.
+ */
 @Component
 @RequiredArgsConstructor
 public class Init {

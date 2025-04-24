@@ -16,6 +16,13 @@ public class PaymentController {
 
     private final TossUseCasePort tossUseCasePort;
 
+
+    /**
+     * 결제 요청 API를 통해 결제, 포인트 적립을 수행한다.
+     * 포인트 할인율이 적용되서 들어오면, 해당 할인율을 적용한 금액을 결제, 포인트 적립을 수행한다.
+     * @param tossPayRequest
+     * @return
+     */
     @PostMapping("/tosspayment")
     public TossPaymentConfirmReponse getTossUseCasePort(
             @RequestBody TossPayRequest tossPayRequest
