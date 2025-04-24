@@ -30,7 +30,7 @@ public class UserQueryAdapter implements UserQueryPort {
     }
 
     @Override
-    public User getUserInf(Long id) {
+    public User getUserInf(long id) {
         return UserToDomain.to(userRepository.findByUserId(id).get());
     }
 

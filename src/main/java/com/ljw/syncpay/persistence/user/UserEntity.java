@@ -36,4 +36,8 @@ public class UserEntity {
     public void updatePoint(int point) {
         this.point += point;
     }
+
+    public void updateProfileViewCount() {
+        this.profileViewCount += 1;
+    }
 }

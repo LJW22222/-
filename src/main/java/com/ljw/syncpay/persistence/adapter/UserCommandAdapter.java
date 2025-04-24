@@ -19,13 +19,14 @@ public class UserCommandAdapter implements UserCommandPort{
     private final UserRepository userRepository;
 
     @Override
-    public User updateUserProfileViewCount(Long userId) {
+    public User updateUserProfileViewCount(long userId) {
         UserEntity userEntity = userRepository.findByUserId(userId).orElseThrow(() -> new NoSuchElementException("User not found"));
+        userEntity.updateProfileViewCount();
         return UserToDomain.to(userEntity);
     }
 
     @Override
-    public void updateUserPoint(Long userId, int point) {
+    public void updateUserPoint(long userId, int point) {
         UserEntity userEntity = userRepository.findByUserId(userId).orElseThrow(() -> new NoSuchElementException("User not found"));
         userEntity.updatePoint(point);
     }

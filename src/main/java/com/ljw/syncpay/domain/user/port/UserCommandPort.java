@@ -4,8 +4,8 @@ import com.ljw.syncpay.domain.user.User;
 
 public interface UserCommandPort {
 
-    User updateUserProfileViewCount(Long userId);
+    User updateUserProfileViewCount(long userId);
 
-    void updateUserPoint(Long userId, int point);
+    void updateUserPoint(long userId, int point);
 
 }

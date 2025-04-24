@@ -7,5 +7,5 @@ public interface UserQueryPort {
 
     Page<User> getUserProfiles(int page, int size, String sortType);
 
-    User getUserInf(Long id);
+    User getUserInf(long id);
 }

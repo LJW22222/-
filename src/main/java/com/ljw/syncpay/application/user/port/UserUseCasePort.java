@@ -9,7 +9,7 @@ public interface UserUseCasePort {
 
     Page<User> getUserProfiles(int page, int size, SortType sortType);
 
-    User updateUserProfileViewCount(Long userId);
+    User updateUserProfileViewCount(long userId);
 
 
 }
