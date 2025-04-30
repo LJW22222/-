@@ -6,9 +6,9 @@ spring:
   application:
     name: syncpay
   datasource:
-    url: jdbc:mysql://localhost:3306/${DATABASE_NAME}
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:mysql://localhost:3306/"your_database"
+    username: "your_username"
+    password: "your_password"
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -20,6 +20,6 @@ spring:
 
 payment:
   toss:
-   SECRET_KEY : ${TOSS_SECRET_KEY}
+   SECRET_KEY : "your_toss_secret_key"
   kakao:
-    SECRET_KEY : ${KAKAO_SECRET_KEY}
+    SECRET_KEY : "your_kakao_secret_key"
