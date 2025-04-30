@@ -8,8 +8,8 @@ import com.ljw.syncpay.infra.toss.dto.TossPaymentConfirmReponse;
 
 public interface PaymentUseCasePort {
 
-    TossPaymentConfirmReponse tossPayment(String paymentKey, String orderId, int amount, long userId, int coupon);
-    KaKaoPaymentConfirmReponse kakaoPayment(KaKaoPaymentInfo kaKaoPaymentInfo, long userId, int coupon);
+    TossPaymentConfirmReponse tossPayment(String paymentKey, String orderId, int amount, long userId);
+    KaKaoPaymentConfirmReponse kakaoPayment(KaKaoPaymentInfo kaKaoPaymentInfo, long userId);
     KaKaoPaymentSetResponse kakaoSetPayment(KaKaoPaymentSetInfo kaKaoPaymentSetInfo);
 
 }

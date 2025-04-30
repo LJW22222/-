@@ -1,6 +1,8 @@
 package com.ljw.syncpay.api.payment.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor

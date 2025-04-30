@@ -11,8 +11,6 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class PayFeignErrorDecoder implements ErrorDecoder {
 
-    private final ErrorDecoder defaultDecoder = new Default();
-
     @Override
     public Exception decode(String methodKey, Response response) {
         try {

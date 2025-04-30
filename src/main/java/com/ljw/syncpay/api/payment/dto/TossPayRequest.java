@@ -13,6 +13,5 @@ public class TossPayRequest {
     private final String orderId;
     private final String paymentKey;
     private final long userId;
-    private final int coupon;
 
 }

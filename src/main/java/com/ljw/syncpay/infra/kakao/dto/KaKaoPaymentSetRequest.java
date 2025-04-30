@@ -1,7 +1,5 @@
 package com.ljw.syncpay.infra.kakao.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ljw.syncpay.domain.payment.dto.KaKaoPaymentInfo;
 import com.ljw.syncpay.domain.payment.dto.KaKaoPaymentSetInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -22,8 +22,6 @@ public class KaKaoPayRequest {
     private final String pg_token;
     @JsonProperty("userId")
     private final long userId;
-    @JsonProperty("coupon")
-    private final int coupon;
     @JsonProperty("total_amount")
     private final int total_amount;
 

@@ -2,18 +2,14 @@ package com.ljw.syncpay.persistence.adapter;
 
 import com.ljw.syncpay.domain.user.User;
 import com.ljw.syncpay.domain.user.port.UserQueryPort;
-import com.ljw.syncpay.domain.user.vo.SortType;
 import com.ljw.syncpay.persistence.user.UserEntity;
 import com.ljw.syncpay.persistence.user.repository.UserRepository;
 import com.ljw.syncpay.persistence.user.support.UserToDomain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

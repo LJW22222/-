@@ -2,7 +2,6 @@ package com.ljw.syncpay.api.payment;
 
 import com.ljw.syncpay.api.payment.dto.KaKaoPayRequest;
 import com.ljw.syncpay.api.payment.dto.KakaoReadyRequest;
-import com.ljw.syncpay.api.payment.dto.KakaoReadyResponse;
 import com.ljw.syncpay.api.payment.dto.TossPayRequest;
 import com.ljw.syncpay.application.payment.port.PaymentUseCasePort;
 import com.ljw.syncpay.domain.payment.dto.KaKaoPaymentInfo;
@@ -12,15 +11,7 @@ import com.ljw.syncpay.infra.kakao.dto.KaKaoPaymentSetResponse;
 import com.ljw.syncpay.infra.toss.dto.TossPaymentConfirmReponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,10 +43,16 @@ public class PaymentController {
                 tossPayRequest.getPaymentKey(),
                 tossPayRequest.getOrderId(),
                 tossPayRequest.getAmount(),
-                tossPayRequest.getUserId(),
-                tossPayRequest.getCoupon()
+                tossPayRequest.getUserId()
         );
     }
+
+    /**
+     * 카카오 결제 승인을 한다.
+     * 들어오는 결제 금액은 결제 준비단계에서 discount하고 들어온 값이다.
+     * @param kaKaoPayRequest
+     * @return
+     */
     @PostMapping("/kakapayment")
     public KaKaoPaymentConfirmReponse naverPayment(
             @RequestBody KaKaoPayRequest kaKaoPayRequest
@@ -70,15 +67,21 @@ public class PaymentController {
                         kaKaoPayRequest.getPg_token(),
                         kaKaoPayRequest.getTotal_amount()
                 ),
-                kaKaoPayRequest.getUserId(),
-                kaKaoPayRequest.getCoupon()
+                kaKaoPayRequest.getUserId()
         );
         log.info(kaKaoPaymentConfirmReponse.toString());
         return kaKaoPaymentConfirmReponse;
     }
 
 
-    @PostMapping("/kakao-pay/ready")
+    /**
+     * 카카오 결제 준비를 하여 결제창을 retrun한다.
+     * 카카오의 경우 결제 준비, 승인을 백엔드를 통해 처리를 한다.
+     * amount같은 경우, 할인율이 들어오면 discount한 값을 최종적으로 결제 준비 body에 담아서 보낸다.
+     * @param request
+     * @return
+     */
+    @PostMapping("/kakaopay/ready")
     public KaKaoPaymentSetResponse kakaoPayReady(@RequestBody KakaoReadyRequest request) {
         KaKaoPaymentSetResponse kaKaoPaymentSetResponse = paymentUseCasePort.kakaoSetPayment(new KaKaoPaymentSetInfo(
                 request.getCid(),

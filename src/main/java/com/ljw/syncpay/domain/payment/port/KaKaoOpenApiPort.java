@@ -1,6 +1,5 @@
 package com.ljw.syncpay.domain.payment.port;
 
-import com.ljw.syncpay.api.payment.dto.KakaoReadyResponse;
 import com.ljw.syncpay.domain.payment.dto.KaKaoPaymentInfo;
 import com.ljw.syncpay.domain.payment.dto.KaKaoPaymentSetInfo;
 import com.ljw.syncpay.infra.kakao.dto.KaKaoPaymentConfirmReponse;

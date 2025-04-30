@@ -30,13 +30,10 @@ public class PaymentUseCase implements PaymentUseCasePort {
      * 할인율 로직 같은 경우 CouponDiscount에 존재
      */
     @Override
-    public TossPaymentConfirmReponse tossPayment(String paymentKey, String orderId, int amount, long userId, int coupon) {
-//        int discount = CouponDiscount.discount(coupon, amount);
-//        int discountAmount = amount - discount;
+    public TossPaymentConfirmReponse tossPayment(String paymentKey, String orderId, int amount, long userId) {
         TossPaymentConfirmReponse tossPaymentConfirmReponse = tossOpenApiPort.tossPayment(amount, paymentKey, orderId);
         log.info("tossPaymentConfirmReponse :: " + tossPaymentConfirmReponse.toString());
         userCommandPort.updateUserPoint(userId, tossPaymentConfirmReponse.getAmount());
-//        userCommandPort.updateUserPoint(userId, discountAmount);
         return tossPaymentConfirmReponse;
     }
 
@@ -45,14 +42,13 @@ public class PaymentUseCase implements PaymentUseCasePort {
      * 별도로 백엔드에서 할인율을 계산할 수 있었음.
      */
     @Override
-    public KaKaoPaymentConfirmReponse kakaoPayment(KaKaoPaymentInfo kaKaoPaymentInfo, long userId, int coupon) {
+    public KaKaoPaymentConfirmReponse kakaoPayment(KaKaoPaymentInfo kaKaoPaymentInfo, long userId
+    ) {
         log.info("kaKaoPaymentInfo :: " + kaKaoPaymentInfo);
         KaKaoPaymentConfirmReponse kaKaoPaymentConfirmReponse = kaKaoOpenApiPort.kakaoPayment(kaKaoPaymentInfo);
         log.info("kaKaoPaymentConfirmReponse22 :: " + kaKaoPaymentConfirmReponse.toString());
         userCommandPort.updateUserPoint(userId, kaKaoPaymentConfirmReponse.getAmount().getTotal());
-//        userCommandPort.updateUserPoint(userId, discountAmount);
         return kaKaoPaymentConfirmReponse;
-//        return null;
     }
 
     @Override
