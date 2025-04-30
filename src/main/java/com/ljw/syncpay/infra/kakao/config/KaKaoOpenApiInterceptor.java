@@ -1,4 +1,4 @@
-package com.ljw.syncpay.infra.toss.config;
+package com.ljw.syncpay.infra.kakao.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Value;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class TossOpenApiInterceptor implements RequestInterceptor {
+public class KaKaoOpenApiInterceptor implements RequestInterceptor {
 
-    @Value("${payment.toss.SECRET_KEY}")
+    @Value("${payment.kakao.SECRET_KEY}")
     private String serviceKey;
 
     @Override
     public void apply(RequestTemplate template) {
-        String encodedKey = Base64.getEncoder().encodeToString((serviceKey + ":").getBytes(StandardCharsets.UTF_8));
         template.header("Content-type", "application/json");
-        template.header("Authorization", "Basic " + encodedKey);
+        template.header("Authorization", "SECRET_KEY " + serviceKey);
     }
 }

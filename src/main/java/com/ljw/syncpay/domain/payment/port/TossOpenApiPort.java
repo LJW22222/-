@@ -1,4 +1,4 @@
-package com.ljw.syncpay.domain.toss.port;
+package com.ljw.syncpay.domain.payment.port;
 
 import com.ljw.syncpay.infra.toss.dto.TossPaymentConfirmReponse;
 

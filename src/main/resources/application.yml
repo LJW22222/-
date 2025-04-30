@@ -18,5 +18,8 @@ spring:
       host: localhost
       port: 6379
 
-toss:
-  SECRET_KEY : "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"
+payment:
+  toss:
+   SECRET_KEY : "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"
+  kakao:
+    SECRET_KEY : "DEVB9467270E40782190969AEEDE5D9B3E0DB608"
